@@ -13,17 +13,18 @@ app.use(express.json());
 
 //Handle GET request to fetch users
 app.get("/users", async(req, res) => {
-    setTimeout(async()=>{
-    const limit = +req.query.limit || 10;
-//   const users = [
-//     { id: 1, name: "John Doe" },
-//     { id: 2, name: "Bob Williams" },
-//     { id: 3, name: "Shannon Jackson" },
-//   ];
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users?_limit=${limit}`)
-  const users = await response.json()
- 
+  setTimeout(async()=> {
+  const limit = +req.query.limit || 10;
 
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users?_limit = ${limit}1 `)
+  const users = await response.json()
+  
+  // const users = [
+  //   { id: 1, name: "John Doe" },
+  //   { id: 2, name: "Bob Williams" },
+  //   { id: 3, name: "Shannon Jackson" },
+  // ];
+ 
   res.send(`
         <h2>Users</h2>
         <ul class="list-group">
@@ -32,7 +33,8 @@ app.get("/users", async(req, res) => {
           .join("")}
         </ul>
         `);
-    },2000)
+      }, 2000)
+    
 });
 
 // Start the server
