@@ -17,29 +17,7 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/search", async (req, res) => {
-  const searchTerm = req.body.search.toLowerCase();
-  if (!searchTerm) {
-    return res.send("<tr></tr>");
-  }
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-  const users = await response.json();
-
-  const searchResults = users.filter((user) => {
-    const name = user.name.toLowerCase();
-    const email = user.email.toLowerCase();
-    return name.includes(searchTerm) || email.includes(searchTerm);
-  });
-  const searchResultHtml = searchResults
-    .map(
-      (user) => `
-    <tr>
-    <td>${user.name}</td>
-    <td>${user.email}</td>
-    </tr>
-    `
-    )
-    .join("");
-  res.send(searchResultHtml);
+  
 });
 
 // Start the server
