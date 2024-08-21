@@ -12,34 +12,41 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Handle GET request to fetch users
-app.get("/users", async (req, res) => {
-  
-});
+app.get("/users", async (req, res) => {});
 
-app.post("/search", async (req, res) => {
-  const searchTerm = req.body.search.toLowerCase();
-  if (!searchTerm) {
-    return res.send("<tr></tr>");
+app.post("/email", (req, res) => {
+  const submittedEmail = req.body.email;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (emailRegex.test(submittedEmail)) {
+    return res.send(/*html*/ `<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+ <label class="form-label">Email address</label>
+ <input
+ type="email"
+ class="form-control"
+ name="email"
+ hx-post="/email"
+ value="${submittedEmail}"
+ >
+ <div class="alert alert-success" role="alert">
+That email is valid
+ </div>
+ </div>`);
+  } else {
+    return res.send(/*html*/ `<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+ <label class="form-label">Email address</label>
+ <input
+ type="email"
+ class="form-control"
+ name="email"
+ hx-post="/email"
+ value="${submittedEmail}"
+ >
+ <div class="alert alert-danger" role="alert">
+ Please enter a valid email address
+ </div>
+ </div>`);
   }
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-  const users = await response.json();
-
-  const searchResults = users.filter((user) => {
-    const name = user.name.toLowerCase();
-    const email = user.email.toLowerCase();
-    return name.includes(searchTerm) || email.includes(searchTerm);
-  });
-  const searchResultHtml = searchResults
-    .map(
-      (user) => `
-    <tr>
-    <td>${user.name}</td>
-    <td>${user.email}</td>
-    </tr>
-    `
-    )
-    .join("");
-  res.send(searchResultHtml);
 });
 
 // Start the server
