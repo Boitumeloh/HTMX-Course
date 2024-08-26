@@ -1,139 +1,191 @@
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
+:root {
+    --color-primary: #3273dc;
+    --color-secondary: #23d160;
+    --color-background: #f9f9f9;
+    --color-text: #363636;
+    --color-white: #fff;
+    --color-light-gray: #ccc;
+    --color-flash: #48c78e;
+    --color-flash-text: #f9f9f9;
+    --color-link-hover: #255aa7;
+    --color-shadow: rgba(0 0 0 / 20%);
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
   }
   
-  h1, h2 {
+  input,
+  button {
+    font: inherit;
+  }
+  
+  body {
+    display: grid;
+    grid-template: "header header" min-content "sidebar content" auto / 275px auto;
+  
+    height: 100vh;
+  
+    font-family: Roboto, sans-serif;
+    font-size: 62.5%;
     font-weight: 400;
-    margin: 0;
-    padding: 10px 0;
+    line-height: 1.5;
+    color: var(--color-text);
   }
   
-  h1 {
-    font-size: 2em;
-  }
-  
-  h2 {
-    font-size: 1.5em;
-  }
-  
-  /* Header Styles */
   header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  
+    grid-area: header;
+  
+    background-color: var(--color-primary);
+    border-bottom: 1px solid var(--color-light-gray);
+    box-shadow: 0 6px 12px var(--color-shadow);
+  }
+  
+  #sidebar {
+    grid-area: sidebar;
+    padding: 25px;
+    background-color: var(--color-background);
+  }
+  
+  #content {
+    grid-area: content;
+    padding: 25px;
   }
   
   header a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  /* Sidebar Styles */
-  #sidebar {
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  
-  ul.contact-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul.contact-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  ul.contact-list li a {
-    color: white;
-    text-decoration: none;
     display: block;
-  }
   
-  ul.contact-list li a:hover {
-    background-color: #34495e;
-    padding-left: 10px;
-  }
-  
-  /* Main Content Styles */
-  main#content {
+    height: 100%;
     padding: 20px;
-    background-color: white;
-    margin-left: 300px;
-    min-height: 100vh;
+  
+    color: var(--color-white);
+    text-decoration: none;
   }
   
-  /* Form Styles */
-  form {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 2.3rem;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+  
+  ul {
+    font-size: 1.2rem;
+    list-style: none;
+  }
+  
+  ul li::before {
+    content: '•';
+  
+    display: inline-block;
+  
+    width: 1rem;
+  
+    font-weight: bold;
+    color: var(--color-secondary);
+  }
+  
+  ul a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  
+  .actions a,
+  .actions button {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+  }
+  
+  button.link {
+    cursor: pointer;
+  
+    padding: 0 !important;
+  
+    text-decoration: underline;
+  
+    background: none !important;
+    border: none;
+  }
+  
+  ul a:hover {
+    text-decoration: underline;
+  }
+  
+  p {
+    font-size: 1.2rem;
   }
   
   label {
     display: block;
-    margin-bottom: 10px;
-    font-weight: 300;
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
   }
   
   input[type="text"],
   input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    width: 400px;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+  
+    font-size: 1.2rem;
+  
+    background-color: var(--color-background);
+    border: 1px solid var(--color-light-gray);
   }
   
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+  
+  button[type="submit"]:not(.link) {
     cursor: pointer;
-    border-radius: 4px;
+  
+    padding: 0.6rem 1.2rem;
+  
+    font-size: 1rem;
+    color: var(--color-white);
+  
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 0.3em;
+  
+    transition: background-color 0.3s ease;
   }
   
-  button:hover {
-    background-color: #45a049;
+  button[type="submit"]:hover {
+    background-color: var(--color-link-hover);
   }
   
-  /* Action Links */
-  div.actions {
-    margin-top: 20px;
+  ul + .actions,
+  p + .actions {
+    margin-top: 1rem;
   }
   
-  div.actions a {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
+  .flash {
+    width: 400px;
+    margin-bottom: 2rem;
+    padding: 0.8rem;
   
-  div.actions a:hover {
-    background-color: #2980b9;
-  }
+    font-size: 1.1rem;
+    color: var(--color-flash-text);
   
-  div.actions button.link {
-    background-color: #e74c3c;
-    margin-left: 0;
+    background-color: var(--color-flash);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px var(--color-shadow);
   }
-  
-  div.actions button.link:hover {
-    background-color: #c0392b;
-  }
-  
