@@ -1,0 +1,21 @@
+{
+  "name": "contact-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+
+  "scripts": {
+    "dev":  "node --watch app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "method-override": "^3.0.0",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

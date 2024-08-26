@@ -1,0 +1,139 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  h1, h2 {
+    font-weight: 400;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  header a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Sidebar Styles */
+  #sidebar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  ul.contact-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul.contact-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  ul.contact-list li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+  }
+  
+  ul.contact-list li a:hover {
+    background-color: #34495e;
+    padding-left: 10px;
+  }
+  
+  /* Main Content Styles */
+  main#content {
+    padding: 20px;
+    background-color: white;
+    margin-left: 300px;
+    min-height: 100vh;
+  }
+  
+  /* Form Styles */
+  form {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+  
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Action Links */
+  div.actions {
+    margin-top: 20px;
+  }
+  
+  div.actions a {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  div.actions a:hover {
+    background-color: #2980b9;
+  }
+  
+  div.actions button.link {
+    background-color: #e74c3c;
+    margin-left: 0;
+  }
+  
+  div.actions button.link:hover {
+    background-color: #c0392b;
+  }
+  
