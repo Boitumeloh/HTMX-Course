@@ -1,0 +1,25 @@
+- isEditing = () => !(Object.keys(expense).length === 0);
+
+h2=isEditing() ? "Edit Expense" : "New Expense"
+
+form(
+  action=isEditing() ? `/update/${expense.id}?_method=PUT` : '/expenses',
+  method='POST',
+
+  hx-post=isEditing() ? false : '/expenses',
+  hx-put=isEditing() ? `/update/${expense.id}` : false,
+  hx-target='#sidebar',
+  hx-push-url=isEditing() ? `/expenses/${expense.id}` : false
+  hx-on::after-request='if(event.detail.successful) this.reset()',
+)
+  label(for='description') Description:
+  input#description(type='text', name='description', required, value=expense.description)
+
+  label(for='amount') Amount:
+  input#amount(type='number', name='amount', required, value=expense.amount)
+
+  label(for='date') Date:
+  input#date(type='date', name='date', required, value=expense.date)
+
+  div.actions
+    button(type='submit') Submit

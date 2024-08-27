@@ -1,0 +1,22 @@
+h2 #{expense.description}
+
+p #[strong Description:] #{expense.description}
+p #[strong Amount:] $#{expense.amount}
+p #[strong Date:] #{expense.date}
+
+div.actions
+  form(method='POST', action=`/delete/${expense.id}?_method=DELETE`)
+    button(
+      type='submit',
+      hx-delete=`/delete/${expense.id}`,
+      hx-target='#sidebar',
+      hx-push-url='/expenses'
+      class='link'
+    ) Delete Expense
+
+  a(
+    href=`/expenses/${expense.id}/edit`,
+    hx-get=`/expenses/${expense.id}/edit`,
+    hx-push-url='true',
+    hx-target='#content'
+  ) Edit Expense

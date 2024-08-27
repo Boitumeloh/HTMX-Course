@@ -1,0 +1,19 @@
+ul.expense-list
+  each expense in expenses
+    li
+      a(
+        href=`/expenses/${expense.id}`,
+        hx-get=`/expenses/${expense.id}`,
+        hx-target='#content'
+        hx-push-url='true',
+      )= `${expense.description} - $${expense.amount}`
+
+div.actions
+  button(
+    type='button',
+    hx-get='/expenses/new',
+    hx-target='#content',
+    hx-push-url='true',
+    class='btn-new-expense'
+  ) New Expense
+
