@@ -11,12 +11,13 @@ div.actions
       hx-delete=`/delete/${expense.id}`,
       hx-target='#sidebar',
       hx-push-url='/expenses'
-      class='link'
+      class='btn-delete'
     ) Delete Expense
-
-  a(
+  br
+  button(
     href=`/expenses/${expense.id}/edit`,
     hx-get=`/expenses/${expense.id}/edit`,
     hx-push-url='true',
-    hx-target='#content'
+    hx-target='#content',
+    class='btn-edit'
   ) Edit Expense

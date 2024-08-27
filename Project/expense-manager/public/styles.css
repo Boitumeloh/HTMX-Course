@@ -1,13 +1,13 @@
 :root {
-  --color-primary: #213dda; /* Coral */
-  --color-secondary: #2351ad; /* Teal */
-  --color-background: #f1f8e9; /* Light Green */
+  --color-primary: #0c0c0c; /* Coral */
+  --color-secondary: #0c0c0c; /* Teal */
+  --color-background: #ffffff; /* Light Green */
   --color-text: #333333; /* Dark Gray */
   --color-white: #ffffff; /* White */
   --color-light-gray: #e0e0e0; /* Light Gray */
   --color-flash: #ffeb3b; /* Yellow */
   --color-flash-text: #000000; /* Black */
-  --color-link-hover: #c62828; /* Dark Red */
+  --color-link-hover: #08eb00; /* Dark Red */
   --color-shadow: rgba(0, 0, 0, 0.15); /* Shadow */
 }
 
@@ -153,7 +153,7 @@ button[type="submit"]:not(.link) {
 }
 
 button[type="submit"]:hover {
-  background-color: var(--color-link-hover);
+  background-color: rgb(1, 214, 1);
 }
 
 ul + .actions,
@@ -197,6 +197,22 @@ button.btn-new-expense {
   transition: background-color 0.3s ease;
 }
 
+button.btn-delete{
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  color: var(--color-white);
+  background-color: var(--color-secondary); /* Background color */
+  border: none;
+  border-radius: 0.3em;
+  transition: background-color 0.3s ease;
+
+}
+
+button.btn-delete:hover{
+  background-color: red;
+}
+
 button.btn-new-expense:hover {
   background-color: #00897b; /* Slightly darker teal for hover effect */
 }
@@ -204,6 +220,22 @@ button.btn-new-expense:hover {
 button.btn-new-expense:focus {
   outline: 2px solid var(--color-primary); /* Outline on focus */
   outline-offset: 2px;
+}
+
+button.btn-edit{
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  color: var(--color-white);
+  background-color: var(--color-secondary); /* Background color */
+  border: none;
+  border-radius: 0.3em;
+  transition: background-color 0.3s ease;
+
+}
+
+button.btn-edit:hover{
+  background-color: rgb(0, 195, 255);
 }
 /* 
 @media (max-width: 768px) {
