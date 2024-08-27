@@ -3,11 +3,11 @@ const express = require('express');
 const router = express.Router();
 
 const expenses = [
-  { id: 1, description: 'Groceries', amount: 50, date: '2023-08-01' },
-  { id: 2, description: 'Electricity Bill', amount: 100, date: '2023-08-02' },
-  { id: 3, description: 'Internet Subscription', amount: 30, date: '2023-08-03' },
-  { id: 4, description: 'Gasoline', amount: 40, date: '2023-08-04' },
-  { id: 5, description: 'Dining Out', amount: 60, date: '2023-08-05' },
+  { id: 1, description: 'Groceries', amount: 2000, date: '2023-08-01' },
+  { id: 2, description: 'Electricity Bill', amount: 1000, date: '2023-08-02' },
+  { id: 3, description: 'Internet Subscription', amount: 300, date: '2023-08-03' },
+  { id: 4, description: 'Gasoline', amount: 600, date: '2023-08-04' },
+  { id: 5, description: 'Dining Out', amount: 500, date: '2023-08-05' },
 ];
 
 // GET /expenses

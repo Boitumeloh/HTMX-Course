@@ -205,7 +205,7 @@ button.btn-new-expense:focus {
   outline: 2px solid var(--color-primary); /* Outline on focus */
   outline-offset: 2px;
 }
-
+/* 
 @media (max-width: 768px) {
   body {
     grid-template: "header" min-content "content" auto / 1fr;
@@ -219,4 +219,4 @@ button.btn-new-expense:focus {
   #content {
     padding: 15px;
   }
-}
+} */

@@ -6,7 +6,7 @@ ul.expense-list
         hx-get=`/expenses/${expense.id}`,
         hx-target='#content'
         hx-push-url='true',
-      )= `${expense.description} - $${expense.amount}`
+      )= `${expense.description} - R${expense.amount}`
 
 div.actions
   button(
