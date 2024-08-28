@@ -11,7 +11,7 @@ const expenses = [
 ];
 
 // GET /expenses
-router.get('/expense s', (req, res) => {
+router.get('/expenses', (req, res) => {
   res.render('index', { action: '', expenses, expense: {} });
 });
 
