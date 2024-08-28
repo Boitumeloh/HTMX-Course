@@ -1,0 +1,21 @@
+h2 #{list.item}
+
+p #[strong item:] #{list.item}
+p #[strong price:] #{list.price}
+
+div.actions
+  form(method='POST', action=`/delete/${list.id}?_method=DELETE`)
+    button(
+      type='submit',
+      hx-delete=`/delete/${list.id}`,
+      hx-target='#sidebar',
+      hx-push-url='/lists'
+      class='link'
+    ) Delete list
+
+  a(
+    href=`/lists/${list.id}/edit`,
+    hx-get=`/lists/${list.id}/edit`,
+    hx-push-url='true',
+    hx-target='#content'
+  ) Edit list

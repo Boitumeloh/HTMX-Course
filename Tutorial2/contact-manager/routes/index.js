@@ -2,104 +2,100 @@ const express = require('express');
 
 const router = express.Router();
 
-const contacts = [
-  { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
-  { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com' },
-  { id: 3, name: 'Emily Johnson', email: 'emily.johnson@example.com' },
-  { id: 4, name: 'Aarav Patel', email: 'aarav.patel@example.com' },
-  { id: 5, name: 'Liu Wei', email: 'liu.wei@example.com' },
-  { id: 6, name: 'Fatima Zahra', email: 'fatima.zahra@example.com' },
-  { id: 7, name: 'Carlos Hernández', email: 'carlos.hernandez@example.com' },
-  { id: 8, name: 'Olivia Kim', email: 'olivia.kim@example.com' },
-  { id: 9, name: 'Kwame Nkrumah', email: 'kwame.nkrumah@example.com' },
-  { id: 10, name: 'Chen Yu', email: 'chen.yu@example.com' },
+  const lists = [
+  { id: 1,item: 'Rice', price: 'R120,00' },
+  { id: 2, item: 'Chicken',price: 'R150,00' },
+  { id: 3, item: 'Bread', price: 'R19,00' },
+  { id: 4, item: 'Juice', price: 'R55,00' },
+  { id: 5, item: 'Snacks',price: 'R110' },
+
 ];
 
-// GET /contacts
-router.get('/contacts', (req, res) => {
-  res.render('index', { action: '', contacts, contact: {} });
+// GET /lists
+router.get('/lists', (req, res) => {
+  res.render('index', { action: '', lists, list: {} });
 });
 
-// GET /contacts/new
-router.get('/contacts/new', (req, res) => {
+// GET /lists/new
+router.get('/lists/new', (req, res) => {
   if (req.headers['hx-request']) {
-    res.render('form', { contact: {} });
+    res.render('form', { list: {} });
   } else {
-    res.render('index', { action: 'new', contacts, contact: {} });
+    res.render('index', { action: 'new', lists, list: {} });
   }
 });
 
-// GET /contacts/1
-router.get('/contacts/:id', (req, res) => {
+// GET /lists/1
+router.get('/lists/:id', (req, res) => {
   const { id } = req.params;
-  const contact = contacts.find((c) => c.id === Number(id));
+  const list = lists.find((c) => c.id === Number(id));
 
   if (req.headers['hx-request']) {
-    res.render('contact', { contact });
+    res.render('list', { list });
   } else {
-    res.render('index', { action: 'show', contacts, contact });
+    res.render('index', { action: 'show', lists, list });
   }
 });
 
-// GET /contacts/1/edit
-router.get('/contacts/:id/edit', (req, res) => {
+// GET /lists/1/edit
+router.get('/lists/:id/edit', (req, res) => {
   const { id } = req.params;
-  const contact = contacts.find((c) => c.id === Number(id));
+  const list = lists.find((c) => c.id === Number(id));
 
   if (req.headers['hx-request']) {
-    res.render('form', { contact });
+    res.render('form', { list });
   } else {
-    res.render('index', { action: 'edit', contacts, contact });
+    res.render('index', { action: 'edit', lists, list });
   }
 });
 
-// POST /contacts
-router.post('/contacts', (req, res) => {
-  const newContact = {
-    id: contacts.length + 1,
-    name: req.body.name,
-    email: req.body.email,
+// POST /lists
+router.post('/lists', (req, res) => {
+  const newlist = {
+    id: lists.length + 1,
+    item: req.body.item,
+    price: req.body.price,
   };
 
-  contacts.push(newContact);
+  lists.push(newlist);
 
   if (req.headers['hx-request']) {
-    res.render('sidebar', { contacts }, (err, sidebarHtml) => {
+    res.render('sidebar', { lists }, (err, sidebarHtml) => {
       const html = `
         <main id="content" hx-swap-oob="afterbegin">
-          <p class="flash">Contact was successfully added!</p>
+          <p class="flash">list was successfully added!</p>
         </main>
         ${sidebarHtml}
       `;
       res.send(html);
     });
   } else {
-    res.render('index', { action: 'new', contacts, contact: {} });
+    res.render('index', { action: 'new', lists, list: {} });
   }
 });
 
-// PUT /contacts/1
+// PUT /lists/1
 router.put('/update/:id', (req, res) => {
   const { id } = req.params;
 
-  const newContact = {
+  const newlist = {
     id: Number(id),
-    name: req.body.name,
-    email: req.body.email,
+    item: req.body.item,
+    price: req.body.price,
   };
 
-  const index = contacts.findIndex((c) => c.id === Number(id));
+  const index = lists.findIndex((c) => c.id === Number(id));
 
-  if (index !== -1) contacts[index] = newContact;
+  if (index !== -1) lists[index] = newlist;
 
   if (req.headers['hx-request']) {
-    res.render('sidebar', { contacts }, (err, sidebarHtml) => {
-      res.render('contact', { contact: contacts[index] }, (err, contactHTML) => {
+    res.render('sidebar', { lists }, (err, sidebarHtml) => {
+      res.render('list', { list: lists[index] }, (err, listHTML) => {
         const html = `
           ${sidebarHtml}
           <main id="content" hx-swap-oob="true">
-            <p class="flash">Contact was successfully updated!</p>
-            ${contactHTML}
+            <p class="flash">list was successfully updated!</p>
+            ${listHTML}
           </main>
         `;
 
@@ -107,28 +103,28 @@ router.put('/update/:id', (req, res) => {
       });
     });
   } else {
-    res.redirect(`/contacts/${index + 1}`);
+    res.redirect(`/lists/${index + 1}`);
   }
 });
 
-// DELETE /contacts/1
+// DELETE /lists/1
 router.delete('/delete/:id', (req, res) => {
   const { id } = req.params;
-  const index = contacts.findIndex((c) => c.id === Number(id));
+  const index = lists.findIndex((c) => c.id === Number(id));
 
-  if (index !== -1) contacts.splice(index, 1);
+  if (index !== -1) lists.splice(index, 1);
   if (req.headers['hx-request']) {
-    res.render('sidebar', { contacts }, (err, sidebarHtml) => {
+    res.render('sidebar', { lists }, (err, sidebarHtml) => {
       const html = `
         <main id="content" hx-swap-oob="true">
-          <p class="flash">Contact was successfully deleted!</p>
+          <p class="flash">list was successfully deleted!</p>
         </main>
         ${sidebarHtml}
       `;
       res.send(html);
     });
   } else {
-    res.redirect('/contacts');
+    res.redirect('/lists');
   }
 });
 

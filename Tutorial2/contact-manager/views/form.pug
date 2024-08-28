@@ -1,22 +1,19 @@
-- isEditing = () => !(Object.keys(contact).length === 0);
+- isEditing = () => !(Object.keys(list).length === 0);
 
-h2=isEditing() ? "Edit Contact" : "New Contact"
+h2=isEditing() ? "Edit list" : "New list"
 
 form(
-  action=isEditing() ? `/update/${contact.id}?_method=PUT` : '/contacts',
+  action=isEditing() ? `/update/${list.id}?_method=PUT` : '/lists',
   method='POST',
-
-  hx-post=isEditing() ? false : '/contacts',
-  hx-put=isEditing() ? `/update/${contact.id}` : false,
+  hx-post=isEditing()?`/update/${list.id}` : `/lists`,
   hx-target='#sidebar',
-  hx-push-url=isEditing() ? `/contacts/${contact.id}` : false
-  hx-on::after-request='if(event.detail.successful) this.reset()',
+  hx-swap='outerHTML'
 )
-  label(for='name') Name:
-  input#name(type='text', name='name', required, value=contact.name)
+  label(for='item') Item:
+  input#item(type='text', name='item', required, value=list.item)
 
-  label(for='email') Email:
-  input#email(type='email', name='email', required, value=contact.email)
+  label(for='price') Price:
+  input#price(type='text', name='price', required, value=list.price)
 
   div.actions
     button(type='submit') Submit
